@@ -1,0 +1,18 @@
+github_file_url="https://github.com/komalatc012/resume.git"
+output_file="resume"
+if command -v wget &> /dev/null
+then
+wget -o "$output_file" "$github_file_url"
+elif command -v curl &> /dev/null
+then
+curl -o "$output_file" "$github_file_url"
+else
+echo "neither wget nor curl is installed"
+exit 1
+fi
+
+if[ -f "$output_file"]; then
+echo "file downloaded successfully as $output_file"
+else
+echo "failed to download the file"
+fi
